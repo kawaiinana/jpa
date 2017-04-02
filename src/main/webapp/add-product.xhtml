@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/common.xhtml">
+	<ui:define name="title">Add Product</ui:define>
+	<ui:define name="header">Add New Product</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Product Name" />
+				<h:inputText value="#{productNewBean.product.name}" />
+				
+				<h:outputLabel value="Category" />
+				<h:selectOneMenu value="#{productNewBean.product.category}" converter="#{categoryConverter}">
+				<f:selectItems value="#{categories}" var="c" itemValue="#{c}" itemLabel="#{c.name}"></f:selectItems>
+				</h:selectOneMenu>
+				
+				<h:outputLabel value="Price" />
+				<h:inputText value="#{productNewBean.product.price}" />
+				
+				<h:panelGroup></h:panelGroup>
+				<h:panelGroup>
+					<button type="reset">Clear</button>
+				<h:commandButton action="#{productNewBean.save()}" value="Add Product" />
+				</h:panelGroup>
+				
+				
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

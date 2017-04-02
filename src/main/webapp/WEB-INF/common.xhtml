@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title><ui:insert name="title">JPA 7</ui:insert></title>
+	<h:outputStylesheet library="css" name="application.css" />
+	<link rel="stylesheet" href="../resources/css/application.css" />
+
+</h:head>
+<body>
+	<div class="header">
+		<h2>
+			<ui:insert name="header">JPA 7</ui:insert>
+		</h2>
+	</div>
+
+	<div class="container">
+		<div class="leftmenu">
+			<ul>
+				<li><h:link value="Home" outcome="index" /></li>
+				<li><h:link value="Categories" outcome="categories" /></li>
+				<li><h:link value="Add Product" outcome="add-product" /></li>
+				<li><h:link value="Product List" outcome="products" /></li>
+			</ul>
+		</div>
+
+
+		<div class="content">
+			<ui:insert name="content"></ui:insert>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/common.xhtml">
+	<ui:define name="title">Product Lists</ui:define>
+	<ui:define name="header">Product Lists</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:selectOneMenu value="#{productListBean.schCategory}"	converter="#{categoryConverter}">
+				<f:selectItems value="#{categories}" var="c" itemValue="#{c}"
+					itemLabel="#{c.name}">
+				</f:selectItems>
+			</h:selectOneMenu>
+
+			<h:inputText value="#{productListBean.priceFrom}"
+				p:placeholder="Price From" />
+			<h:inputText value="#{productListBean.priceTo}"
+				p:placeholder="Price To" />
+			<h:commandButton actionListener="#{productListBean.search()}"
+				value="Search">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+
+			<h:dataTable value="#{productListBean.products}" var="p">
+				<h:column>
+					<f:facet name="header">ID</f:facet>#{p.id}
+		</h:column>
+				<h:column>
+					<f:facet name="header">Name</f:facet>#{p.name}
+		</h:column>
+				<h:column>
+					<f:facet name="header">Category</f:facet>#{p.category.name}
+		</h:column>
+				<h:column>
+					<f:facet name="header">Price</f:facet>#{p.price}
+		</h:column>
+			</h:dataTable>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
